@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div id="topPost" class="postText">
+    <h5>All Posts</h5>
+</div>
+<div id="posts" class="onePostPage">
+    {% for blog in blogs %}
+    <div class="postCard">
+        <div id="top" class="post">
+            <p>{{ blog.title }}</p>
+            <img src=" {% static 'images/shareIcon.svg' %} " alt="" id='shareBtn'>
+        </div>
+        <div id="middle" class="post" style='height:fit-content; padding-top : 12px;'>
+            <img src="{{ blog.image_url }}" alt="">
+            <p>{{ blog.content | safe |truncatechars:500|striptags }}</p>
+        </div>
+        <div id="bottom" class="post">
+            <div id="postCommentIcon">
+            </div>
+            <div id="readMore">
+                <p> <a href="{% url 'post_detail' blog.slug %}" style='color:black;text-decoration:none;' >read more</a></p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

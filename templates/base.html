@@ -1,0 +1,998 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogByBlog</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}base.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #CAF0F8;
+            overflow-x: hidden;
+        }
+
+        header {
+            width: 100vw;
+            height: 60vh;
+            /* background-color: red; */
+        }
+
+        nav {
+            width: 100vw;
+            height: 15vh;
+            /* background-color: gray; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0px 10px;
+        }
+
+        .nav {
+            height: 100%;
+
+        }
+
+        #navLinks {
+            width: 60%;
+            /* background-color: blue; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #navLinks ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            gap: 70px;
+        }
+
+        #navLinks ul li a {
+            text-decoration: none;
+            font-size: 1.1em;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 500;
+            color: #03045E;
+            padding-bottom: 4px;
+        }
+
+        #searchBarAndUser {
+            width: 30%;
+            /* background-color: rgb(0, 255, 221); */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+
+        }
+
+        #searchBarAndUser input {
+            height: 40px;
+            width: 220px;
+            padding-left: 20px;
+            color: #023E8A;
+            border-radius: 12px;
+            border: none;
+            box-shadow: 1px 1px 4px #0096C7 inset;
+        }
+
+        #searchBarAndUser form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #searchBarAndUser button {
+            height: 40px;
+            background-color: transparent;
+            border: none;
+            margin-left: 4px;
+
+        }
+
+        #searchBarAndUser button img {
+            height: 30px;
+            filter: drop-shadow(1px 1px 1px rgb(0, 0, 0));
+        }
+
+        #searchBarAndUser>img {
+            height: 36px;
+            width: 36px;
+            padding: 4px;
+            border-radius: 50%;
+            border: solid black 2px;
+        }
+
+        #heroSection {
+            width: 100vw;
+            height: 45vh;
+            /* background-color: green; */
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            align-items: center;
+
+        }
+
+        .heroBox {
+            height: 100%;
+            width: 50%;
+            /* background-color: red; */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .heroBox1 {
+            height: 40%;
+            width: 100%;
+            /* background-color: #fff; */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            color: #03045E;
+        }
+
+        .heroBox2 {
+            height: 60%;
+            width: 100%;
+            /* background-color: #ff0000; */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0px 7%;
+            padding-top: 0px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 400;
+            font-size: large;
+            text-align: center;
+            color: #023E8A;
+        }
+
+        main {
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .postText {
+            height: fit-content;
+            width: 70%;
+            /* background-color: #fff; */
+            color: #0077B6;
+            font-size: 1.5em;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #posts {
+            margin: 12px 0px;
+            height: fit-content;
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .postCard {
+            width: 100%;
+            height: fit-content;
+            margin: 12px 0px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #48CAE4;
+            box-shadow: 4px 4px 2px #48CAE4;
+        }
+
+        .post {
+            width: 100%;
+        }
+
+        #middle {
+            height: 300px;
+        }
+
+        #top,
+        #bottom {
+            height: 70px;
+            /* background-color: #fff; */
+        }
+
+        #top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 24px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 1.5em;
+            text-transform: capitalize;
+            font-weight: 800;
+            color: #023E8A;
+            box-shadow: 0px 1px 1px #0096C7;
+
+        }
+
+        #top img {
+            height: 32px;
+            width: 32px;
+        }
+
+        #middle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 24px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 1.2em;
+            color: #023E8A;
+        }
+
+        #middle img {
+            height: 10rem;
+            width: 10rem;
+            object-fit: cover;
+            margin-right: 20px;
+            box-shadow: 2px 2px 3px #0096C7;
+        }
+
+        #bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #bottom>div {
+            width: 50%;
+            height: 100%;
+            /* background-color: red; */
+            display: flex;
+            align-items: center;
+            padding: 0px 24px;
+
+        }
+
+        #postCommentIcon {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-transform: capitalize;
+
+        }
+
+        #bottom img {
+            height: 32px;
+            width: 32px;
+            margin-right: 4px;
+        }
+
+        #readMore {
+            justify-content: flex-end;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #morePost {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footebox {
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #socialLinks {
+            height: 100%;
+            width: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin: 8px 0px;
+        }
+
+        #socialLinks img {
+            height: 24px;
+        }
+
+        #getConnected img {
+            height: 32px;
+
+        }
+
+        #footerMiddle {
+            height: fit-content;
+            background-color: #0077B6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+
+        }
+
+        .footerMiddlebox {
+            height: 100%;
+            /* background-color: #fff; */
+            padding: 20px 80px;
+        }
+
+        .footerMiddlebox h2 {
+            color: #03045E;
+            font-weight: 600;
+        }
+
+        .footerMiddlebox p {
+            color: #03045E;
+            font-weight: 300;
+        }
+
+        .footerMiddlebox h2,
+        p {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        }
+
+        .footerMiddlebox p {
+            margin-top: 18px;
+            margin-bottom: 18px;
+            text-align: justify;
+            font-size: 1.1em;
+        }
+
+        .footerMiddlebox button {
+            background-color: #03045E;
+            color: #48CAE4;
+            border: none;
+            font-size: 0.8em;
+            border-radius: 4px;
+            filter: drop-shadow(1px 1px 2px blue);
+        }
+
+        .footerMiddlebox button:hover {
+            color: #03045E;
+            background-color: #48CAE4;
+        }
+
+        #footerMiddleBox1 button {
+            padding: 6px 24px;
+
+        }
+
+        #footerMiddleBox2 {
+            padding: 20px 20px;
+            text-align: center;
+        }
+
+        #footerMiddleBox2 ul {
+            margin-top: 18px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 500;
+            text-transform: capitalize;
+            color: #0096C7;
+            list-style: none;
+
+        }
+
+        #footerMiddleBox2 ul a {
+            color: #03045E;
+            text-decoration: none;
+
+        }
+
+        #footerMiddleBox1 {
+            width: 60%;
+        }
+
+        #footerMiddleBox2 {
+            width: 20%;
+        }
+
+        #footerMiddleBox3 {
+            width: 25%;
+        }
+
+        #footerBottom {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: fit-content;
+            padding: 12px 0px;
+            background-color: #0096C7;
+            font-size: 1.1em;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-weight: 600;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            color: #03045E;
+
+        }
+
+        #mobileNav {
+            display: none;
+        }
+
+        #mobileSearchBar {
+            display: none;
+        }
+
+        footer {
+            margin-top: 16px;
+        }
+
+        #mobileMenu {
+            display: none;
+        }
+
+        #userMenu {
+            position: absolute;
+            top: 70px;
+            right: 110px;
+            z-index: 10;
+            height: fit-content;
+            width: fit-content;
+            background-color: #48CAE4;
+            padding: 12px 15px;
+            border-radius: 4px;
+            display: none;
+
+        }
+
+        #userMenu ul {
+            list-style: none;
+            color: #03045E;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-self: center;
+
+
+        }
+
+        #userMenu ul a {
+            text-decoration: none;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 700;
+
+        }
+
+        #userMenu ul a:hover {
+            color: black;
+
+        }
+
+        .onePostPage h1 {
+            color: #03045E;
+
+        }
+
+        .onePostPage p {
+            color: #023E8A;
+            text-align: justify;
+        }
+
+        /* Base styles for the pop-up container, ensuring it's centered */
+        .popup-container {
+            display: none;
+            /* Pop-up is hidden by default */
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+        }
+
+        /* Pop-up content box styling */
+        .popup-content {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            position: relative;
+            width: 91.666667%;
+            max-width: 24rem;
+            border: 2px solid #3b82f6;
+            text-align: center;
+            animation: fadeIn 0.3s ease-out forwards;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Pop-up heading and text */
+        .popup-content h2 {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .popup-content p {
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Close button styling */
+        .close-btn {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            color: #9ca3af;
+            font-size: 2rem;
+            line-height: 1;
+            font-weight: 700;
+            cursor: pointer;
+            transition: color 0.2s;
+            border: none;
+            background: none;
+            padding: 0;
+        }
+
+        .close-btn:hover {
+            color: #4b5563;
+        }
+
+        /* Login button inside the pop-up */
+        .login-btn {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0.75rem 1.5rem;
+            background-color: #2563eb;
+            color: #ffffff;
+            font-weight: 700;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease-in-out;
+            text-decoration: none;
+        }
+
+        .login-btn:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        /* SVG icon styling */
+        .popup-icon {
+            height: 4rem;
+            width: 4rem;
+            margin-left: auto;
+            margin-right: auto;
+            color: #3b82f6;
+        }
+
+        /* Keyframes for fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            #userMenu {
+                top: 60px;
+                right: 1px;
+                background-color: #0096C7;
+            }
+
+            nav {
+                display: none;
+            }
+
+            #title h1 {
+                font-size: larger;
+            }
+
+            footer>div {
+                width: 100vw;
+            }
+
+            #searchBarAndUser {
+                justify-content: space-between;
+            }
+
+            .postCard {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            #top {
+                height: fit-content;
+                padding-top: 16px;
+                padding-bottom: 16px;
+            }
+
+            #top img {
+                margin-top: 12px;
+            }
+
+            #top p {
+                font-size: large;
+            }
+
+            #middle {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: fit-content;
+                margin-top: 12px;
+            }
+
+            #middle p {
+                text-align: justify;
+                margin-top: 12px;
+            }
+
+            .heroBox1 {
+                height: fit-content;
+                margin-bottom: 12px;
+            }
+
+            #heroSection {
+                height: fit-content;
+                margin: 48px 0px;
+                margin-top: 80px;
+            }
+
+            #titleAbout {
+                width: 100vw;
+                height: fit-content;
+            }
+
+            header {
+                height: fit-content;
+            }
+
+            #topPost {
+                width: 90%;
+            }
+
+            #posts {
+                width: 90%;
+            }
+
+            #footerMiddleBox2 {
+                display: none;
+            }
+
+            .footerMiddlebox {
+                padding: 20px;
+            }
+
+            #footerMiddle {
+                flex-direction: column;
+            }
+
+            #footerMiddleBox1 {
+                width: 100vw;
+            }
+
+            #footerMiddle {
+                align-items: flex-start;
+                padding: 12px 20px;
+            }
+
+            #footerMiddleBox1 p {
+                margin: 6px;
+            }
+
+            #mobileNav {
+                display: block;
+                height: 60px;
+                width: 100vw;
+                background-color: #0096C7;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0px 12px;
+            }
+
+            #mobileSearchBar {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+
+                height: 60px;
+                width: 100vw;
+                background-color: #48CAE4;
+                padding: 0px 12px;
+                position: relative;
+            }
+
+            #mobileSearchBar button {
+                position: absolute;
+                height: 32px;
+                width: 32px;
+                right: 16px;
+                top: auto;
+                background-color: transparent;
+                border: none;
+                top: 10px;
+
+            }
+
+            #mobileSearchBar img {
+                height: 32px;
+
+            }
+
+            #mobileSearchBar input {
+                position: absolute;
+                width: 80%;
+                height: 40px;
+                padding-left: 12px;
+                border-radius: 12px;
+                border: none;
+                left: 16px;
+                top: 10px;
+            }
+
+            #socialLinks img {
+                height: 28px;
+            }
+
+            #mobileNav img {
+                height: 32px;
+            }
+
+            #mobileMenu {
+                display: none;
+                position: absolute;
+                top: 60px;
+                z-index: 5;
+            }
+
+            #mobileMenu ul {
+                width: 100vw;
+                height: fit-content;
+                background-color: #fff;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                list-style: none;
+            }
+
+            #mobileMenu ul a {
+                display: block;
+                width: 100vw;
+                text-align: center;
+                padding: 18px 0px;
+                color: #03045E;
+                background-color: #67cee2;
+                text-decoration: none;
+                text-transform: capitalize;
+                font-size: 1.2em;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                font-weight: 400;
+                border-bottom: solid #03045E 1px;
+
+            }
+
+            body {
+                overflow-x: hidden;
+            }
+
+            #footerMiddleBox3 {
+                width: fit-content;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header style="height: fit-content;">
+        <nav>
+            <div id="navLinks" class="nav">
+                <ul>
+                    <li><a href="/" class="link active">Home</a></li>
+                    <li><a href="{% url 'all_Posts' %}" class="link"> All Posts</a></li>
+                    <li><a href="{% url 'about_me' %}" class="link">About Me</a></li>
+                    <li><a href="{% url 'contacts' %}" class="link">Contacts</a></li>
+                    <li><a href="{% url 'privacyPolicy' %}" class="link">Privacy policy</a></li>
+                </ul>
+            </div>
+            <div id="searchBarAndUser" class="nav">
+                {% if user is None %}
+                <a href="{% url 'Login' %}" style="background-color: #0077B6; 
+          color: #ffffff; 
+          padding: 10px 20px; 
+          border-radius: 9999px; 
+          text-decoration: none; 
+          font-family: 'Inter', sans-serif; 
+          font-weight: 600; 
+          border: none;
+          display: inline-block;">
+                    Login
+                </a>
+                <a href="/signup.html" style="background-color: #0096C7; 
+          color: #ffffff; 
+          padding: 10px 20px; 
+          border-radius: 9999px; 
+          text-decoration: none; 
+          font-family: 'Inter', sans-serif; 
+          font-weight: 600; 
+          border: none;
+          display: inline-block;">
+                    Sign Up
+                </a>
+                {% else %}
+                <img src="{% static 'images/userIcon.svg' %}" alt="" id="userIconDesktop">
+                {% endif %}
+            </div>
+        </nav>
+        <div id="mobileNav">
+            <img src="{% static 'images/menuIcon.svg' %}" alt="" id="menuIcon">
+            <img src="{% static 'images/userIcon.svg' %}" alt="" id="userIcon">
+        </div>
+        <div id="mobileMenu">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'all_Posts' %}">Posts</a></li>
+                <li><a href="{% url 'about_me' %}">About Me</a></li>
+                <li><a href="{% url 'contacts' %}">Contacts</a></li>
+                <li><a href="{% url 'privacyPolicy' %}">Privacy policy</a></li>
+            </ul>
+        </div>
+        <div id="userMenu">
+            <ul>
+                {% if user is None %}
+                <li><a href="{% url 'Login' %}" style="background-color: #0077B6; 
+          color: #ffffff; 
+          padding: 10px 20px; 
+          border-radius: 9999px; 
+          text-decoration: none; 
+          font-family: 'Inter', sans-serif; 
+          font-weight: 600; 
+          border: none;
+          display: inline-block;">
+                        Login
+                    </a></li>
+                <li><a href="{% url 'SignUp' %}" style="background-color: #0077B6; 
+          color: #ffffff; 
+          padding: 10px 20px; 
+          border-radius: 9999px; 
+          text-decoration: none; 
+          font-family: 'Inter', sans-serif; 
+          font-weight: 600; 
+          border: none;
+          display: inline-block; margin-top: 10px;">
+                        Sign Up
+                    </a></li>
+                {% else %}
+                <li><a href="{% url 'Logout' %}" style="background-color: #0077B6; 
+          color: #ffffff; 
+          padding: 10px 20px; 
+          border-radius: 9999px; 
+          text-decoration: none; 
+          font-family: 'Inter', sans-serif; 
+          font-weight: 600; 
+          border: none;
+          display: inline-block;">
+                        Logout
+                    </a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+    </header>
+    <main style="padding-top: 24px;">
+        {% block content %}
+        <!-- Default content goes here -->
+        {% endblock %}
+    </main>
+    <footer style="position:static; bottom: 0px;">
+        <div class="footeBox" id="footerMiddle">
+            <div class="footerMiddlebox" id="footerMiddleBox1">
+                <h2>About Me</h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi, necessitatibus.</p>
+                <a href="mailto:jaankenwat143gmail.com" style="background-color: #03045E; 
+          color: #ffffff; 
+          padding: 10px 20px; 
+          border-radius: 5px; 
+          text-decoration: none; 
+          font-family: 'Inter', sans-serif; 
+          font-weight: 600; 
+          border: none;
+          display: inline-block;">
+                    Email Me
+                </a>
+            </div>
+            <div class="footerMiddlebox" id="footerMiddleBox2">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="{% url 'Home' %}">Home</a></li>
+                    <li><a href="{% url 'contacts' %}">Contacts</a></li>
+                    <li><a href="{% url 'privacyPolicy' %}">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footerMiddlebox" id="footerMiddleBox3">
+                <h2>Get in Touch</h2>
+                <div id="socialLinks">
+                    <a href="https://www.facebook.com/"><img src="{% static 'images/facebookIcon.svg' %}" alt=""></a>
+                    <a href="https://www.instagram.com/"><img src="{% static 'images/instagramIcon.svg' %}" alt=""></a>
+                    <a href="https://www.snapchat.com/"><img src="{% static 'images/snapchatIcon.svg' %}" alt=""></a>
+                    <a href="https://www.x.com/"><img src="{% static 'images/xIcon.svg' %}" alt=""></a>
+                    <a href="https://www.youtube.com/@Jaankenwat"><img src="{% static 'images/youtubeIcon.svg' %}" alt=""></a>
+                </div>
+            </div>
+        </div>
+        <div class="footeBox" id="footerBottom">
+            <p>made with &hearts;</p>
+        </div>
+    </footer>
+    <script>
+        const Usermenu = document.getElementById("userMenu");
+        document.getElementById("menuIcon").addEventListener("click", function () {
+            const menu = document.getElementById("mobileMenu");
+
+            if (menu.style.display === "none" || menu.style.display === "") {
+                menu.style.display = "flex";
+            } else {
+                menu.style.display = "none";
+            }
+        });
+        document.getElementById("userIcon").addEventListener("click", function () {
+            const menu = document.getElementById("userMenu");
+
+            if (menu.style.display === "none" || menu.style.display === "") {
+                menu.style.display = "flex";
+            } else {
+                menu.style.display = "none";
+            }
+        });
+        document.getElementById("userIconDesktop").addEventListener("click", function () {
+            const menu = document.getElementById("userMenu");
+
+            if (menu.style.display === "none" || menu.style.display === "") {
+                menu.style.display = "flex";
+            } else {
+                menu.style.display = "none";
+            }
+        });
+        document.getElementById('shareBtn').addEventListener('click', async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: document.title,
+          text: "Check out this blog post!",
+          url: window.location.href,
+        });
+      } catch (err) {
+        console.error('Share failed:', err);
+      }
+    } else {
+      alert("Sharing not supported on this browser.");
+    }
+  });
+    </script>
+</body>
+
+</html>

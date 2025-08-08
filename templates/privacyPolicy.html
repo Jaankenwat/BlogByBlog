@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Your Blog</title>
+    <style>
+        /* Using the Inter font for a clean, modern look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        
+        :root {
+            --primary-color: #0077B6;
+            --secondary-color: #0096C7;
+            --text-color: #03045E;
+            --light-text-color: #023E8A;
+            --background-color: #CAF0F8;
+            --card-background: #ffffff;
+            --divider-color: #ADE8F4;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 896px; /* 56rem */
+            margin: 4rem auto;
+            padding: 1rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .header-title {
+            font-size: 2.25rem; /* 36px */
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .header-title:hover {
+            color: var(--secondary-color);
+        }
+
+        .header-subtitle {
+            font-size: 1rem;
+            color: var(--light-text-color);
+            margin-top: 0.5rem;
+        }
+        
+        .card {
+            background-color: var(--card-background);
+            border-radius: 0.75rem; /* 12px */
+            box-shadow: 0 20px 25px -5px var(--shadow-color), 0 8px 10px -6px var(--shadow-color);
+            padding: 1.5rem;
+            border-top: 4px solid var(--primary-color);
+            margin: 0 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                padding: 2rem;
+            }
+            .card {
+                padding: 2.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .card {
+                padding: 3rem;
+            }
+        }
+        
+        .policy-section {
+            padding: 1rem 0;
+        }
+        
+        .policy-heading {
+            font-size: 3rem; /* 48px */
+            font-weight: 800;
+            color: #111827; /* gray-900 */
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .policy-section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #111827;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .policy-section p {
+            margin-bottom: 1rem;
+            color: #4b5563;
+        }
+        
+        .policy-section ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            color: #4b5563;
+        }
+        
+        .policy-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .divider {
+            margin: 2rem 0;
+            border-bottom: 1px solid var(--divider-color);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Privacy Policy Section -->
+    <section class="container">
+
+        <!-- Header -->
+        <div class="header">
+            <a href="{% url 'Home' %}" class="header-title">BlogByBlog</a>
+            <p class="header-subtitle">Where ideas come to life.</p>
+        </div>
+        
+        <!-- Main Content Card -->
+        <div class="card">
+            
+            <div class="policy-section">
+                <h1 class="policy-heading">Privacy Policy</h1>
+                <p>
+                    <strong>Last updated: </strong>08-08-2025
+                </p>
+                <p>
+                    Your privacy is important to us. This Privacy Policy explains what information we collect, how we use it, and your choices regarding our use of your information. This policy applies to BlogByBlog (the "Site").
+                </p>
+                
+                <h2>1. Information We Collect</h2>
+                <p>
+                    We collect different types of information for various purposes to provide and improve our service to you.
+                </p>
+                <ul>
+                    <li>
+                        <strong>Personal Data:</strong> While using our Site, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you ("Personal Data"). Personally identifiable information may include, but is not limited to:
+                        <ul>
+                            <li>Email address</li>
+                            <li>Name (first and last)</li>
+                            <li>Cookies and Usage Data</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Usage Data:</strong> We may also collect information on how the Site is accessed and used ("Usage Data"). This Usage Data may include information such as your computer's Internet Protocol address (e.g., IP address), browser type, browser version, the pages of our Site that you visit, the time and date of your visit, the time spent on those pages, and other diagnostic data.
+                    </li>
+                </ul>
+                
+                <h2>2. Use of Data</h2>
+                <p>
+                    We use the collected data for various purposes:
+                </p>
+                <ul>
+                    <li>To provide and maintain our Site</li>
+                    <li>To notify you about changes to our Site</li>
+                    <li>To allow you to participate in interactive features of our Site when you choose to do so</li>
+                    <li>To provide customer support</li>
+                    <li>To monitor the usage of our Site</li>
+                    <li>To detect, prevent and address technical issues</li>
+                </ul>
+                
+                <h2>3. Cookies</h2>
+                <p>
+                    We use cookies and similar tracking technologies to track the activity on our Site and hold certain information. Cookies are files with a small amount of data which may include an anonymous unique identifier. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Site.
+                </p>
+
+                <h2>4. Links to Other Sites</h2>
+                <p>
+                    Our Site may contain links to other sites that are not operated by us. If you click on a third-party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit.
+                </p>
+
+                <h2>5. Changes to This Privacy Policy</h2>
+                <p>
+                    We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.
+                </p>
+                
+                <h2>6. Contact Us</h2>
+                <p>
+                    If you have any questions about this Privacy Policy, please contact us.
+                </p>
+            </div>
+            
+        </div>
+
+    </section>
+
+</body>
+</html>

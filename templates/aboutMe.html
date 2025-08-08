@@ -1,0 +1,325 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Your Blog</title>
+    <style>
+        /* Using the Inter font for a clean, modern look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        
+        :root {
+            --primary-color: #0077B6;
+            --secondary-color: #0096C7;
+            --text-color: #03045E;
+            --light-text-color: #023E8A;
+            --background-color: #CAF0F8;
+            --card-background: #ffffff;
+            --divider-color: #ADE8F4;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 896px; /* 56rem */
+            margin: 4rem auto;
+            padding: 1rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .header-title {
+            font-size: 2.25rem; /* 36px */
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .header-title:hover {
+            color: var(--secondary-color);
+        }
+
+        .header-subtitle {
+            font-size: 1rem;
+            color: var(--light-text-color);
+            margin-top: 0.5rem;
+        }
+        
+        .card {
+            background-color: var(--card-background);
+            border-radius: 0.75rem; /* 12px */
+            box-shadow: 0 20px 25px -5px var(--shadow-color), 0 8px 10px -6px var(--shadow-color);
+            padding: 1.5rem;
+            border-top: 4px solid var(--primary-color);
+            margin: 0 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                padding: 2rem;
+            }
+            .card {
+                padding: 2.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .card {
+                padding: 3rem;
+            }
+        }
+        
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .profile-section {
+                flex-direction: row;
+                align-items: flex-start;
+                text-align: left;
+            }
+        }
+
+        .profile-image-container {
+            width: 12rem; /* 192px */
+            height: 12rem; /* 192px */
+            flex-shrink: 0;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 9999px; /* full rounded */
+            border: 4px solid #00B4D8;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-text {
+            text-align: center;
+            flex-grow: 1;
+        }
+        
+        @media (min-width: 768px) {
+            .profile-text {
+                text-align: left;
+            }
+        }
+
+        .profile-heading {
+            font-size: 3rem; /* 48px */
+            font-weight: 800;
+            color: var(--text-color);
+            line-height: 1.2;
+        }
+        
+        @media (min-width: 640px) {
+            .profile-heading {
+                font-size: 3.5rem; /* 56px */
+            }
+        }
+
+        .profile-heading span {
+            color: var(--primary-color);
+        }
+
+        .profile-bio {
+            font-size: 1.125rem; /* 18px */
+            color: var(--light-text-color);
+            margin-top: 1rem;
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @media (min-width: 768px) {
+            .profile-bio {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+
+        .divider {
+            margin: 2rem 0;
+            border-bottom: 1px solid var(--divider-color);
+        }
+
+        .detailed-bio h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+        
+        .detailed-bio p {
+            margin-top: 1.5rem;
+            color: var(--light-text-color);
+        }
+
+        .social-links {
+            margin-top: 2rem;
+        }
+
+        .social-links h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .social-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .social-list {
+                justify-content: flex-start;
+            }
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #90E0EF;
+            border-radius: 9999px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--light-text-color);
+            transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .social-link:hover {
+            color: var(--card-background);
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .cta {
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            border: 1px solid transparent;
+            font-size: 1.125rem;
+            font-weight: 500;
+            border-radius: 9999px;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            color: var(--card-background);
+            background-color: var(--primary-color);
+            transition: background-color 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .cta-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #0096C7;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- About Me Section -->
+    <section class="container">
+
+        <!-- Header -->
+        <div class="header">
+            <a href="{% url 'Home' %}" class="header-title">BlogByBlog</a>
+            <p class="header-subtitle">Where ideas come to life.</p>
+        </div>
+        
+        <!-- Main Content Card -->
+        <div class="card">
+            
+            <div class="profile-section">
+                <!-- Profile Image -->
+                <div class="profile-image-container">
+                    <!-- Replace the URL below with your own profile image -->
+                    <img src="{% static 'images/myPic.png' %}" alt="Your Name" class="profile-image">
+                </div>
+
+                <!-- Profile Text -->
+                <div class="profile-text">
+                    <h1 class="profile-heading">
+                        Hi, I'm <span>Jaan Kenwat</span>.
+                    </h1>
+                    <p class="profile-bio">
+                        I'm a passionate writer and creator behind this blog, exploring the intersections of technology, art, and daily life. Welcome!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Horizontal divider -->
+            <div class="divider"></div>
+
+            <!-- Detailed Bio -->
+            <div class="detailed-bio">
+                <h2>My Story</h2>
+                <p>
+                    From a young age, I've been fascinated by the power of stories. Whether it was through books, films, or a simple conversation, I've always believed that sharing our experiences is the best way to connect and learn from one another. This blog is my digital space to do just that.
+                </p>
+                <p>
+                    I started this blog as a way to document my journey and share the things I'm most passionate about. Here, you'll find everything from deep dives into my latest coding projects to reflections on personal growth, and even some recommendations for my favorite books and movies.
+                </p>
+                <p>
+                    When I'm not writing, you can find me hiking a local trail, trying to bake the perfect sourdough, or getting lost in a new video game. I believe that life is a collection of small moments, and I hope this blog helps you find some joy and inspiration in your own.
+                </p>
+            </div>
+            
+            <!-- Social Media Links -->
+            <div class="social-links">
+                <h3>Connect with me</h3>
+                <div class="social-list">
+                    <a href="https://www.youtube.com/@Jaankenwat" class="social-link">
+                        Youtube
+                    </a>
+                    <a href="https://www.instagram.com/jaan_kenwat/" class="social-link">
+                        Instagram
+                    </a>
+                    <a href="https://www.linkedin.com/in/jaan-kenwat/" class="social-link">
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="cta">
+                <a href="{% url 'Home' %}" class="cta-button">
+                    Explore My Blog
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+</html>

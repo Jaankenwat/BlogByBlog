@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{% static 'css/SignUp.css' %}">
+</head>
+
+<body>
+    <main>
+        <div id="main">
+            <div class="box box1">
+                <img src="{% static 'images/MIniBlogSignUp.png' %}" alt="">
+            </div>
+            <div class="box box2">
+                <div id="SignUpBox">
+                    <h2>Sign Up</h2>
+                    <p>Create your free account now !</p>
+                    <br>
+                    {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                        <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <form action="{% url 'SignUp' %}" method="POST" id="SignUpForm">
+                        {% csrf_token %}
+                        <div id="name">
+                            <input type="text" name="first" id="" placeholder="First">
+                            <input type="text" name="last" id="" placeholder="Last">
+                        </div>
+                        <input type="text" name="username" id="" placeholder="username">
+                        <input type="email" name="email" id="" placeholder="Email">
+                        <input type="password" name="password" id="" placeholder="Password">
+                        <button type="submit" id="SubmitBotton">Create Account </button>
+                    </form>
+                    <br>
+                    <a href="{% url 'Login' %}" style="color: blue; text-decoration: none;">Already have Account!</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</body>
+
+</html>
