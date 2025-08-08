@@ -1,8 +1,8 @@
 databases:
   - name: blogbyblogdb
     plan: free
-    databaseName: BlogByBlog
-    user: BlogByBlog
+    databaseName: blogbyblogdb   # must be lowercase, no capitals, valid SQL identifier
+    user: blogbybloguser          # must be lowercase, no capitals
 
 services:
   - type: web
@@ -15,7 +15,7 @@ services:
       - key: DATABASE_URL
         fromDatabase:
           name: blogbyblogdb
-          property: postgresql://jaankenwat:9LBXYShXRSfKzDHsrvZ6KHQhRWLD0hC6@dpg-d2apfeur433s7392crh0-a/blogbyblogdb
+          property: connectionString
       - key: SECRET_KEY
         generateValue: true
       - key: WEB_CONCURRENCY
