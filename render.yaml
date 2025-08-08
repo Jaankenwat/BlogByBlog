@@ -9,7 +9,7 @@ services:
     plan: free
     name: BlogByBlog
     runtime: python
-    buildCommand: './build.sh'
+    buildCommand: 'pip install -r requirements.txt'
     startCommand: 'python -m gunicorn BlogByBlog.asgi:application -k uvicorn.workers.UvicornWorker'
     envVars:
       - key: DATABASE_URL
